@@ -59,11 +59,11 @@ export default function Navbar() {
           </Link>
 
           <div className="nav-links">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#work">Our Creatives</a>
-            <a href="#studies">Case Studies</a>
-            <a href="#contact">Contact</a>
+            <a href="/">Home</a>
+            <a href="/#about">About</a>
+            <a href="/#work">Our Creatives</a>
+            <a href="/#studies">Case Studies</a>
+            <a href="/#contact">Contact</a>
           </div>
 
           {/* Mobile toggle */}
