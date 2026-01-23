@@ -16,25 +16,25 @@ const cases: CaseItem[] = [
     title: "Real Estate Lead Engine",
     category: "Performance Marketing",
     image: "/project-1.jpg",
-    slug: "real-estate-leads",
+    slug: "real-estate-digital-marketing-agency",
   },
   {
     title: "E-commerce Revenue Lift",
     category: "Paid Ads + CRO",
     image: "/project-2.jpg",
-    slug: "ecommerce-growth",
+    slug: "real-estate-developer-digital-marketing",
   },
   {
     title: "Brand Awareness at Scale",
     category: "Social Media",
     image: "/project-3.png",
-    slug: "brand-awareness",
+    slug: "local-business-digital-marketing",
   },
   {
     title: "Always-On Growth System",
     category: "Full Funnel Marketing",
     image: "/project-1.jpg",
-    slug: "growth-system",
+    slug: "d2c-ecommerce-website-development",
   },
 ];
 
@@ -94,7 +94,7 @@ export default function CaseStudyList() {
           {cases.map((item, i) => (
             <div key={item.slug}>
               <Link
-                href={`/case-studies/${item.slug}`}
+                href={`/case-study/${item.slug}`}
                 className="case-hover-item"
                 onMouseEnter={() => setActive(i)}
                 onMouseLeave={() => setActive(null)}
