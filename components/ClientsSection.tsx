@@ -20,25 +20,28 @@ export default function ClientsSection() {
   const trackRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const track = trackRef.current;
-    if (!track || window.innerWidth < 768) return;
+    const ctx = gsap.context(() => {
+      const track = trackRef.current;
+      if (!track || window.innerWidth < 768) return;
 
-    const totalWidth = track.scrollWidth / 2;
+      const totalWidth = track.scrollWidth / 2;
 
-    gsap.set(track, { x: 0 });
+      gsap.set(track, { x: 0 });
 
-    gsap.to(track, {
-      x: -totalWidth,
-      duration: 30,
-      ease: "none",
-      repeat: -1,
-      modifiers: {
-        x: (x) => {
-          const parsed = parseFloat(x);
-          return `${parsed % -totalWidth}px`;
+      gsap.to(track, {
+        x: -totalWidth,
+        duration: 30,
+        ease: "none",
+        repeat: -1,
+        modifiers: {
+          x: (x) => {
+            const parsed = parseFloat(x);
+            return `${parsed % -totalWidth}px`;
+          },
         },
-      },
+      });
     });
+    return () => ctx.revert();
   }, []);
 
   return (
