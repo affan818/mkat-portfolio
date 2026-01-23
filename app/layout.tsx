@@ -6,6 +6,7 @@ import Loader from "@/components/Loader";
 import Navbar from "@/components/Navbar";
 import PageTransition from "@/components/PageTransition";
 import InteractiveBg from "@/components/InteractiveBg";
+import Footer from "@/components/Footer";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -37,6 +38,7 @@ export default function RootLayout({
         <CustomCursor />
         <Navbar />
         <PageTransition>{children}</PageTransition>
+        <Footer />
       </body>
     </html>
   );
