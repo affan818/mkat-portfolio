@@ -1,0 +1,180 @@
+/* RINGS */
+.orbit-ring-outer {
+  stroke: rgba(255, 255, 255, 0.1);
+  stroke-width: 1;
+}
+
+.orbit-ring-inner {
+  stroke: rgba(255, 255, 255, 0.06);
+  stroke-width: 1;
+}
+
+/* RADIAL LINES */
+.orbit-line {
+  stroke: rgba(255, 255, 255, 0.08);
+  stroke-width: 1;
+}
+
+/* ROTATION WRAPPER */
+.orbit-rotate {
+  position: absolute;
+  width: 340px;
+  height: 340px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  animation: orbitSpin 40s linear infinite;
+}
+
+.orbit-rotate.refined {
+  animation-duration: 44s;
+}
+
+/* CIRCULAR NODES */
+.orbit-node {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: white;
+  text-transform: uppercase;
+  transform: translate(-50%, -50%);
+}
+
+/* PERFECT ORBIT POSITIONS */
+.orbit-node:nth-child(1) {
+  transform: rotate(0deg) translateX(170px) translate(-50%, -50%);
+}
+
+.orbit-node:nth-child(2) {
+  transform: rotate(90deg) translateX(170px) translate(-50%, -50%);
+}
+
+.orbit-node:nth-child(3) {
+  transform: rotate(180deg) translateX(170px) translate(-50%, -50%);
+}
+
+.orbit-node:nth-child(4) {
+  transform: rotate(270deg) translateX(170px) translate(-50%, -50%);
+}
+
+/* ROTATION */
+@keyframes orbitSpin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* /// golden corner / */
+
+/* =========================
+   GROWTH BARS – PREMIUM
+========================= */
+.growth-bar {
+  position: relative;
+  width: 40px;
+  border-radius: 14px;
+  background: linear-gradient(
+    to top,
+    rgba(141, 11, 65, 1),
+    rgba(141, 11, 65, 0.35)
+  );
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.15),
+    0 20px 40px rgba(141, 11, 65, 0.25);
+  overflow: hidden;
+}
+
+/* subtle highlight line */
+.bar-shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.35),
+    transparent 70%
+  );
+  opacity: 0.25;
+}
+
+/* ///  */
+
+.segment-card {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  border-radius: 24px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.segment-card h4 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.segment-sub {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.segment-note {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: 8px;
+}
+
+.segment-card ul {
+  padding-left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.segment-card li {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 14px;
+}
+
+/* //// */
+
+.strategy-point {
+  border-left: 2px solid #8d0b41;
+  padding-left: 14px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.funnel-step {
+  padding: 14px 18px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.funnel-divider {
+  height: 18px;
+  width: 2px;
+  background: rgba(141, 11, 65, 0.6);
+  margin-left: 20px;
+}
