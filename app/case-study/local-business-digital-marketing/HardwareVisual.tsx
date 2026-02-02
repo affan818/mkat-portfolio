@@ -1,44 +1,56 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import "../case-study.css";
+
 export default function HardwareVisual() {
+  const wrapperRef = useRef<HTMLDivElement>(null);
   const barsRef = useRef<HTMLDivElement[]>([]);
 
-  useEffect(() => {
-    const tl = gsap.timeline({ delay: 0.8 });
+  useLayoutEffect(() => {
+    if (!wrapperRef.current) return;
+    if (typeof window === "undefined") return;
 
-    // ENTRY GROW
-    tl.fromTo(
-      barsRef.current,
-      { scaleY: 0, opacity: 0 },
-      {
-        scaleY: 1,
-        opacity: 1,
-        duration: 1.4,
-        ease: "power4.out",
-        stagger: 0.18,
-        transformOrigin: "bottom",
-      },
-    );
+    const ctx = gsap.context(() => {
+      const bars = barsRef.current.filter(Boolean); // 👈 IMPORTANT
+      if (!bars.length) return;
 
-    // SUBTLE IDLE FLOAT (alive feel)
-    tl.to(
-      barsRef.current,
-      {
-        y: -6,
-        repeat: -1,
-        yoyo: true,
-        duration: 2.6,
-        ease: "sine.inOut",
-        stagger: {
-          each: 0.2,
-          yoyo: true,
+      const tl = gsap.timeline({ delay: 0.8 });
+
+      // ENTRY GROW
+      tl.fromTo(
+        bars,
+        { scaleY: 0, opacity: 0 },
+        {
+          scaleY: 1,
+          opacity: 1,
+          duration: 1.4,
+          ease: "power4.out",
+          stagger: 0.18,
+          transformOrigin: "bottom",
         },
-      },
-      "+=0.3",
-    );
+      );
+
+      // IDLE FLOAT
+      tl.to(
+        bars,
+        {
+          y: -6,
+          repeat: -1,
+          yoyo: true,
+          duration: 2.6,
+          ease: "sine.inOut",
+          stagger: {
+            each: 0.2,
+            yoyo: true,
+          },
+        },
+        "+=0.3",
+      );
+    }, wrapperRef);
+
+    return () => ctx.revert(); // 👈 CLEANUP
   }, []);
 
   return (

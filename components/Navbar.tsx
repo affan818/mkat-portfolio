@@ -50,7 +50,7 @@ export default function Navbar() {
         <nav className="nav-inner">
           <Link href="/" className="logo">
             <Image
-              src="/logo.png"
+              src="logo.png"
               alt="Your Brand Logo"
               width={120}
               height={40}

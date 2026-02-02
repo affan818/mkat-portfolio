@@ -7,12 +7,12 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const clients = [
-  { name: "Client One", logo: "/clients/client-1.png" },
-  { name: "Client Two", logo: "/clients/client-2.png" },
-  { name: "Client Three", logo: "/clients/client-3.png" },
-  { name: "Client Four", logo: "/clients/client-4.png" },
-  { name: "Client Five", logo: "/clients/client-5.png" },
-  { name: "Client Six", logo: "/clients/client-6.png" },
+  { name: "Client One", logo: "clients/client-1.png" },
+  { name: "Client Two", logo: "clients/client-2.png" },
+  { name: "Client Three", logo: "clients/client-3.png" },
+  { name: "Client Four", logo: "clients/client-4.png" },
+  { name: "Client Five", logo: "clients/client-5.png" },
+  { name: "Client Six", logo: "clients/client-6.png" },
 ];
 
 export default function ClientsSection() {

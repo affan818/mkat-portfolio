@@ -3,14 +3,21 @@
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import AuthorityStack from "./AuthorityStack";
+
 export default function SGrealty() {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     if (!sectionRef.current) return;
+    if (typeof window === "undefined") return;
 
-    const ctx = gsap.context(() => {
-      gsap.from(".cs-intro-reveal", {
+    const ctx = gsap.context((self) => {
+      // 👇 SCOPED selector (VERY IMPORTANT)
+      const items = self.selector?.(".cs-intro-reveal");
+
+      if (!items || !items.length) return;
+
+      gsap.from(items, {
         y: 40,
         opacity: 0,
         duration: 1,
@@ -20,7 +27,13 @@ export default function SGrealty() {
       });
     }, sectionRef);
 
-    return () => ctx.revert();
+    return () => {
+      try {
+        ctx.revert();
+      } catch {
+        // dev-only Turbopack safety
+      }
+    };
   }, []);
 
   return (
