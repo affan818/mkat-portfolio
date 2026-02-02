@@ -22,11 +22,13 @@ export default function ClientsSection() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       const track = trackRef.current;
-      if (!track || window.innerWidth < 768) return;
+      if (!track) return;
 
       const totalWidth = track.scrollWidth / 2;
 
       gsap.set(track, { x: 0 });
+      track.addEventListener("touchstart", () => gsap.globalTimeline.pause());
+      track.addEventListener("touchend", () => gsap.globalTimeline.resume());
 
       gsap.to(track, {
         x: -totalWidth,
@@ -41,6 +43,7 @@ export default function ClientsSection() {
         },
       });
     });
+
     return () => ctx.revert();
   }, []);
 

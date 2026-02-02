@@ -463,27 +463,23 @@ body {
 
 .client-logo {
   flex: 0 0 auto;
-  opacity: 0.6;
+  opacity: 1;
   transition:
     opacity 0.3s ease,
     transform 0.3s ease;
 }
 
 .client-logo img {
-  height: 60px;
+  height: 100px;
   width: auto;
   object-fit: contain;
   filter: grayscale(100%);
   transition: filter 0.3s ease;
+  filter: grayscale(0%);
 }
 
 .client-logo:hover {
-  opacity: 1;
   transform: scale(1.05);
-}
-
-.client-logo:hover img {
-  filter: grayscale(0%);
 }
 
 /* -------- Tablet -------- */
@@ -497,17 +493,6 @@ body {
 /* -------- Mobile -------- */
 
 @media (max-width: 768px) {
-  .clients-marquee {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .marquee-track {
-    animation: none !important;
-    transform: none !important;
-    padding-bottom: 1rem;
-  }
-
   .client-logo {
     opacity: 0.8;
   }
