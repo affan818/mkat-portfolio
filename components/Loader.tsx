@@ -32,7 +32,11 @@ export default function Loader() {
     >
       <div ref={logo} className="loader-logo">
         <Image
+<<<<<<< HEAD
           src={`${BASE_PATH}/logo.png`}
+=======
+          src="logo.png"
+>>>>>>> e698cd326e9f868d3d208a5b9da5faf278f2c9f7
           alt="MKAT Logo"
           width={140}
           height={48}

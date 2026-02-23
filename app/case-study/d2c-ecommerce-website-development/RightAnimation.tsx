@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 
 export default function RightAnimation() {
@@ -11,8 +11,14 @@ export default function RightAnimation() {
   const core = useRef<HTMLDivElement>(null);
   const particles = useRef<HTMLSpanElement[]>([]);
 
+<<<<<<< HEAD
   useEffect(() => {
     if (!container.current) return;
+=======
+  useLayoutEffect(() => {
+    if (!container.current) return;
+    if (typeof window === "undefined") return;
+>>>>>>> e698cd326e9f868d3d208a5b9da5faf278f2c9f7
 
     const ctx = gsap.context(() => {
       const rings = [
@@ -20,8 +26,14 @@ export default function RightAnimation() {
         ringMid.current,
         ringInner.current,
         core.current,
+<<<<<<< HEAD
       ].filter(Boolean);
 
+=======
+      ].filter(Boolean); // 👈 VERY IMPORTANT
+
+      // ENTRY
+>>>>>>> e698cd326e9f868d3d208a5b9da5faf278f2c9f7
       gsap.fromTo(
         rings,
         { scale: 0.7, opacity: 0 },
@@ -35,31 +47,55 @@ export default function RightAnimation() {
         },
       );
 
+<<<<<<< HEAD
       ringOuter.current &&
+=======
+      // RINGS ROTATION
+      if (ringOuter.current) {
+>>>>>>> e698cd326e9f868d3d208a5b9da5faf278f2c9f7
         gsap.to(ringOuter.current, {
           rotate: 360,
           duration: 60,
           repeat: -1,
           ease: "linear",
         });
+<<<<<<< HEAD
 
       ringMid.current &&
+=======
+      }
+
+      if (ringMid.current) {
+>>>>>>> e698cd326e9f868d3d208a5b9da5faf278f2c9f7
         gsap.to(ringMid.current, {
           rotate: -360,
           duration: 42,
           repeat: -1,
           ease: "linear",
         });
+<<<<<<< HEAD
 
       ringInner.current &&
+=======
+      }
+
+      if (ringInner.current) {
+>>>>>>> e698cd326e9f868d3d208a5b9da5faf278f2c9f7
         gsap.to(ringInner.current, {
           rotate: 360,
           duration: 26,
           repeat: -1,
           ease: "linear",
         });
+<<<<<<< HEAD
 
       core.current &&
+=======
+      }
+
+      // CORE PULSE
+      if (core.current) {
+>>>>>>> e698cd326e9f868d3d208a5b9da5faf278f2c9f7
         gsap.to(core.current, {
           scale: 1.15,
           repeat: -1,
@@ -67,9 +103,18 @@ export default function RightAnimation() {
           duration: 2.4,
           ease: "sine.inOut",
         });
+<<<<<<< HEAD
 
       particles.current.forEach((dot, i) => {
         if (!dot) return;
+=======
+      }
+
+      // PARTICLES
+      particles.current.forEach((dot, i) => {
+        if (!dot) return;
+
+>>>>>>> e698cd326e9f868d3d208a5b9da5faf278f2c9f7
         gsap.to(dot, {
           rotate: 360,
           transformOrigin: "50% 50%",
@@ -80,7 +125,11 @@ export default function RightAnimation() {
       });
     }, container);
 
+<<<<<<< HEAD
     return () => ctx.revert();
+=======
+    return () => ctx.revert(); // 👈 CLEANUP (VERY IMPORTANT)
+>>>>>>> e698cd326e9f868d3d208a5b9da5faf278f2c9f7
   }, []);
 
   return (
