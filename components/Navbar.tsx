@@ -53,11 +53,7 @@ export default function Navbar() {
         <nav className="nav-inner">
           <Link href="/" className="logo">
             <Image
-<<<<<<< HEAD
               src={`${BASE_PATH}/logo.png`}
-=======
-              src="logo.png"
->>>>>>> e698cd326e9f868d3d208a5b9da5faf278f2c9f7
               alt="Your Brand Logo"
               width={120}
               height={40}
