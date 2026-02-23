@@ -138,8 +138,23 @@ export default function Infra() {
 
           {/* RIGHT IMAGES */}
           <div className="grid grid-cols-2 gap-4 reveal">
-            <div className="aspect-[4/5] rounded-xl bg-gray-800 overflow-hidden" />
-            <div className="aspect-[4/5] rounded-xl bg-gray-700 overflow-hidden translate-y-10 md:translate-y-16" />
+            <div className="aspect-[4/5] rounded-xl overflow-hidden bg-black">
+              <img
+                src="/creatives/1.png"
+                alt="Creative 1"
+                className="h-full w-full object-cover"
+                loading="lazy"
+              />
+            </div>
+
+            <div className="aspect-[4/5] rounded-xl overflow-hidden bg-black translate-y-10 md:translate-y-16">
+              <img
+                src="/creatives/2.png"
+                alt="Creative 2"
+                className="h-full w-full object-cover"
+                loading="lazy"
+              />
+            </div>
           </div>
         </div>
       </section>

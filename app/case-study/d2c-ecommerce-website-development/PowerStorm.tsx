@@ -4,7 +4,7 @@ import RightAnimation from "./RightAnimation";
 
 export default function PowerStorm() {
   return (
-    <>
+    <main className="bg-[#0B0B0F] text-white">
       <section className="min-h-screen flex items-center px-6 md:px-12 bg-black overflow-hidden">
         <div className="mx-auto grid max-w-7xl grid-cols-1 md:grid-cols-2 gap-20 items-center">
           {/* LEFT CONTENT (DIRECT IN MAIN FILE) */}
@@ -644,6 +644,6 @@ export default function PowerStorm() {
           </div>
         </div>
       </section>
-    </>
+    </main>
   );
 }

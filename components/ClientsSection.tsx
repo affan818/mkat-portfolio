@@ -7,12 +7,20 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const clients = [
-  { name: "Client One", logo: "/clients/client-1.png" },
-  { name: "Client Two", logo: "/clients/client-2.png" },
-  { name: "Client Three", logo: "/clients/client-3.png" },
-  { name: "Client Four", logo: "/clients/client-4.png" },
-  { name: "Client Five", logo: "/clients/client-5.png" },
-  { name: "Client Six", logo: "/clients/client-6.png" },
+  { name: "Client One", logo: "clients/client-1.jpg" },
+  { name: "Client Two", logo: "clients/client-2.jpg" },
+  { name: "Client Three", logo: "clients/client-3.jpg" },
+  { name: "Client Four", logo: "clients/client-4.jpg" },
+  { name: "Client Five", logo: "clients/client-5.jpg" },
+  { name: "Client Six", logo: "clients/client-6.jpg" },
+  { name: "Client Seven", logo: "clients/client-7.jpg" },
+  { name: "Client Eight", logo: "clients/client-8.jpg" },
+  { name: "Client Nine", logo: "clients/client-9.jpg" },
+  { name: "Client Ten", logo: "clients/client-10.jpg" },
+  { name: "Client Eleven", logo: "clients/client-11.jpg" },
+  { name: "Client twelve", logo: "clients/client-12.jpg" },
+  { name: "Client thirteen", logo: "clients/client-13.jpg" },
+  { name: "Client Fourteen", logo: "clients/client-14.jpg" },
 ];
 
 export default function ClientsSection() {
@@ -32,7 +40,7 @@ export default function ClientsSection() {
 
       gsap.to(track, {
         x: -totalWidth,
-        duration: 30,
+        duration: 60,
         ease: "none",
         repeat: -1,
         modifiers: {
@@ -53,13 +61,9 @@ export default function ClientsSection() {
         {/* HEADER */}
         <div className="clients-header">
           <h2>
-            Trusted by
-            <span>brands worldwide</span>
+            With <span>experience</span> across various industries
           </h2>
-          <p>
-            We collaborate with ambitious brands across industries to build
-            digital experiences that perform and scale.
-          </p>
+          <p>We help you build a digital presence that lasts and performs.</p>
         </div>
 
         {/* LOGOS */}

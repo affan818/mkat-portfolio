@@ -8,28 +8,42 @@ gsap.registerPlugin(ScrollTrigger);
 
 const posts = [
   {
-    img: "/project-1.jpg",
-    category: "Real Estate",
-    title: "Luxury Property Campaign",
-  },
-  {
-    img: "/project-2.jpg",
+    img: "creatives/1.png",
     category: "E-commerce",
     title: "Festive Sale Creatives",
   },
-  { img: "/project-3.jpg", category: "Branding", title: "Awareness Campaign" },
   {
-    img: "/project-4.jpg",
+    img: "creatives/2.png",
+    category: "Branding",
+    title: "Awareness Campaign",
+  },
+  {
+    img: "creatives/3.png",
     category: "Performance Ads",
     title: "High CTR Visuals",
   },
   {
-    img: "/project-5.jpg",
+    img: "creatives/4.png",
     category: "Minimal Design",
     title: "Clean Visual Identity",
   },
   {
-    img: "/project-6.jpg",
+    img: "creatives/5.png",
+    category: "Social Media",
+    title: "Scroll-Stopping Content",
+  },
+  {
+    img: "creatives/6.png",
+    category: "Social Media",
+    title: "Scroll-Stopping Content",
+  },
+  {
+    img: "creatives/10.png",
+    category: "Social Media",
+    title: "Scroll-Stopping Content",
+  },
+  {
+    img: "creatives/11.png",
     category: "Social Media",
     title: "Scroll-Stopping Content",
   },
@@ -58,14 +72,13 @@ export default function EditorialInstaGallery() {
         {/* HEADER */}
         <div className="editorial-header">
           <h2>
-            Instagram Creatives
-            <span>crafted with intent</span>
+            What we <span>create</span> for Instagram
           </h2>
           <p>
-            A curated selection of social media visuals designed to capture
-            attention, communicate value, and drive engagement.
+            Built to catch the eye, communicate clearly, and get people to
+            respond
           </p>
-          <p className="editorial-hint">Scroll to explore the work ↓</p>
+          <p className="editorial-hint">Scroll to explore ↓</p>
         </div>
 
         {/* GRID */}
@@ -73,7 +86,7 @@ export default function EditorialInstaGallery() {
           {posts.map((post, i) => (
             <article className="editorial-card" key={i}>
               <div className="editorial-image reveal-mask">
-                <img src={post.img} alt={post.title} />
+                <img src={post.img} alt={post.title} loading="lazy" />
               </div>
 
               {/* <div className="editorial-meta">

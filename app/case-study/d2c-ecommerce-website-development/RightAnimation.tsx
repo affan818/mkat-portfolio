@@ -12,61 +12,75 @@ export default function RightAnimation() {
   const particles = useRef<HTMLSpanElement[]>([]);
 
   useEffect(() => {
-    // ENTRY
-    gsap.fromTo(
-      [ringOuter.current, ringMid.current, ringInner.current, core.current],
-      { scale: 0.7, opacity: 0 },
-      {
-        scale: 1,
-        opacity: 1,
-        duration: 1.4,
-        ease: "power4.out",
-        stagger: 0.12,
-        delay: 0.4,
-      },
-    );
+    if (!container.current) return;
 
-    // RINGS ROTATION (different speeds = depth)
-    gsap.to(ringOuter.current, {
-      rotate: 360,
-      duration: 60,
-      repeat: -1,
-      ease: "linear",
-    });
+    const ctx = gsap.context(() => {
+      const rings = [
+        ringOuter.current,
+        ringMid.current,
+        ringInner.current,
+        core.current,
+      ].filter(Boolean);
 
-    gsap.to(ringMid.current, {
-      rotate: -360,
-      duration: 42,
-      repeat: -1,
-      ease: "linear",
-    });
+      gsap.fromTo(
+        rings,
+        { scale: 0.7, opacity: 0 },
+        {
+          scale: 1,
+          opacity: 1,
+          duration: 1.4,
+          ease: "power4.out",
+          stagger: 0.12,
+          delay: 0.4,
+        },
+      );
 
-    gsap.to(ringInner.current, {
-      rotate: 360,
-      duration: 26,
-      repeat: -1,
-      ease: "linear",
-    });
+      ringOuter.current &&
+        gsap.to(ringOuter.current, {
+          rotate: 360,
+          duration: 60,
+          repeat: -1,
+          ease: "linear",
+        });
 
-    // CORE PULSE
-    gsap.to(core.current, {
-      scale: 1.15,
-      repeat: -1,
-      yoyo: true,
-      duration: 2.4,
-      ease: "sine.inOut",
-    });
+      ringMid.current &&
+        gsap.to(ringMid.current, {
+          rotate: -360,
+          duration: 42,
+          repeat: -1,
+          ease: "linear",
+        });
 
-    // PARTICLE ORBIT
-    particles.current.forEach((dot, i) => {
-      gsap.to(dot, {
-        rotate: 360,
-        transformOrigin: "50% 50%",
-        duration: 10 + i * 3,
-        repeat: -1,
-        ease: "linear",
+      ringInner.current &&
+        gsap.to(ringInner.current, {
+          rotate: 360,
+          duration: 26,
+          repeat: -1,
+          ease: "linear",
+        });
+
+      core.current &&
+        gsap.to(core.current, {
+          scale: 1.15,
+          repeat: -1,
+          yoyo: true,
+          duration: 2.4,
+          ease: "sine.inOut",
+        });
+
+      particles.current.forEach((dot, i) => {
+        if (!dot) return;
+        gsap.to(dot, {
+          rotate: 360,
+          transformOrigin: "50% 50%",
+          duration: 10 + i * 3,
+          repeat: -1,
+          ease: "linear",
+        });
       });
-    });
+    }, container);
+
+    return () => ctx.revert();
   }, []);
 
   return (

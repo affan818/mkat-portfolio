@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
-import Link from "next/link";
 import gsap from "gsap";
 
 type CaseItem = {
@@ -11,29 +10,32 @@ type CaseItem = {
   slug: string;
 };
 
+// 🔥 BASE PATH (important for live)
+const BASE_PATH = process.env.NODE_ENV === "production" ? "/portfolio" : "";
+
 const cases: CaseItem[] = [
   {
     title: "Real Estate Lead Engine",
-    category: "Performance Marketing",
-    image: "/project-1.jpg",
+    category: "Paid Ads + Social media",
+    image: "creatives/1.png",
     slug: "real-estate-digital-marketing-agency",
   },
   {
-    title: "E-commerce Revenue Lift",
-    category: "Paid Ads + CRO",
-    image: "/project-2.jpg",
+    title: "Real Estate Developer Build Brand Authority ",
+    category: "Website + SEO",
+    image: "creatives/7.png",
     slug: "real-estate-developer-digital-marketing",
   },
   {
     title: "Brand Awareness at Scale",
-    category: "Social Media",
-    image: "/project-3.png",
+    category: "Social Media + Paid Ads",
+    image: "creatives/4.png",
     slug: "local-business-digital-marketing",
   },
   {
     title: "Always-On Growth System",
     category: "Full Funnel Marketing",
-    image: "/project-1.jpg",
+    image: "creatives/12.png",
     slug: "d2c-ecommerce-website-development",
   },
 ];
@@ -59,12 +61,12 @@ export default function CaseStudyList() {
     if (!previewRef.current) return;
 
     xTo.current = gsap.quickTo(previewRef.current, "x", {
-      duration: 0.08, // 🔥 faster
+      duration: 0.08,
       ease: "power3.out",
     });
 
     yTo.current = gsap.quickTo(previewRef.current, "y", {
-      duration: 0.08, // 🔥 faster
+      duration: 0.08,
       ease: "power3.out",
     });
   }, []);
@@ -79,57 +81,58 @@ export default function CaseStudyList() {
       <div className="case-hover-wrapper">
         {/* HEADER */}
         <div className="case-hover-header">
-          <h2>
-            Case Studies
-            <span>selected work & outcomes</span>
+          <h2 className="fancy-heading">
+            Case <span>Studies</span>
           </h2>
           <p>
-            Explore our work. Tap to preview on mobile, hover to preview on
-            desktop.
+            See what we did and how it worked for us. And how every campaign
+            tells a story of clarity, strategy, and growth.
           </p>
         </div>
 
         {/* LIST */}
         <div className="case-hover-list">
-          {cases.map((item, i) => (
-            <div key={item.slug}>
-              <Link
-                href={`/case-study/${item.slug}`}
-                className="case-hover-item"
-                onMouseEnter={() => setActive(i)}
-                onMouseLeave={() => setActive(null)}
-                onMouseMove={movePreview}
-                onClick={(e) => {
-                  if (window.innerWidth < 768 && mobileActive !== i) {
-                    e.preventDefault();
-                    setMobileActive(i);
-                  }
-                }}
-              >
-                <span className="case-index">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
+          {cases.map((item, i) => {
+            const href = `${BASE_PATH}/case-study/${item.slug}/`;
 
-                <div className="case-text">
-                  <h3>{item.title}</h3>
-                  <p>{item.category}</p>
-                </div>
-              </Link>
+            return (
+              <div key={item.slug}>
+                {/* DESKTOP + MOBILE MAIN LINK */}
+                <a
+                  href={href}
+                  className="case-hover-item"
+                  onMouseEnter={() => setActive(i)}
+                  onMouseLeave={() => setActive(null)}
+                  onMouseMove={movePreview}
+                  onClick={(e) => {
+                    if (window.innerWidth < 768 && mobileActive !== i) {
+                      e.preventDefault();
+                      setMobileActive(i);
+                    }
+                  }}
+                >
+                  <span className="case-index">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
 
-              {/* MOBILE PREVIEW */}
-              {mobileActive === i && (
-                <div className="case-mobile-preview">
-                  <img src={item.image} alt={item.title} draggable={false} />
-                  <Link
-                    href={`/case-studies/${item.slug}`}
-                    className="case-mobile-cta"
-                  >
-                    View case study →
-                  </Link>
-                </div>
-              )}
-            </div>
-          ))}
+                  <div className="case-text">
+                    <h3>{item.title}</h3>
+                    <p>{item.category}</p>
+                  </div>
+                </a>
+
+                {/* MOBILE PREVIEW */}
+                {mobileActive === i && (
+                  <div className="case-mobile-preview">
+                    <img src={item.image} alt={item.title} draggable={false} />
+                    <a href={href} className="case-mobile-cta">
+                      View case study →
+                    </a>
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
 
         {/* DESKTOP PREVIEW */}

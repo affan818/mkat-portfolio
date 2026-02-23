@@ -1,14 +1,18 @@
+"use client";
+
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 
 export default function GrowthGraph() {
-  const mainPath = useRef<SVGPathElement>(null);
-  const bgPath = useRef<SVGPathElement>(null);
-  const nodes = useRef<SVGGElement>(null);
-  const cards = useRef<SVGGElement>(null);
+  const wrapperRef = useRef<SVGGElement | null>(null);
+  const mainPath = useRef<SVGPathElement | null>(null);
+  const bgPath = useRef<SVGPathElement | null>(null);
+  const nodes = useRef<SVGGElement | null>(null);
+  const cards = useRef<SVGGElement | null>(null);
 
   useLayoutEffect(() => {
     if (
+      !wrapperRef.current ||
       !mainPath.current ||
       !bgPath.current ||
       !nodes.current ||
@@ -16,7 +20,16 @@ export default function GrowthGraph() {
     )
       return;
 
+    if (typeof window === "undefined") return;
+
     const ctx = gsap.context(() => {
+      // 🔒 Freeze node lists (VERY IMPORTANT)
+      const nodeEls = Array.from(nodes.current!.children);
+      const cardEls = Array.from(cards.current!.children);
+
+      if (!nodeEls.length || !cardEls.length) return;
+
+      // SVG path lengths (safe)
       const mainLen = mainPath.current!.getTotalLength();
       const bgLen = bgPath.current!.getTotalLength();
 
@@ -25,8 +38,8 @@ export default function GrowthGraph() {
         strokeDashoffset: (i: number) => (i === 0 ? mainLen : bgLen),
       });
 
-      gsap.set(nodes.current!.children, { scale: 0, opacity: 0 });
-      gsap.set(cards.current!.children, { y: 10, opacity: 0 });
+      gsap.set(nodeEls, { scale: 0, opacity: 0 });
+      gsap.set(cardEls, { y: 10, opacity: 0 });
 
       const tl = gsap.timeline({ delay: 0.6 });
 
@@ -45,7 +58,7 @@ export default function GrowthGraph() {
           "-=1.6",
         )
         .to(
-          nodes.current!.children,
+          nodeEls,
           {
             scale: 1,
             opacity: 1,
@@ -56,7 +69,7 @@ export default function GrowthGraph() {
           "-=1.4",
         )
         .to(
-          cards.current!.children,
+          cardEls,
           {
             y: 0,
             opacity: 1,
@@ -67,8 +80,8 @@ export default function GrowthGraph() {
           "-=1",
         );
 
-      // subtle life
-      gsap.to(nodes.current!.children, {
+      // subtle idle life
+      gsap.to(nodeEls, {
         scale: 1.2,
         repeat: -1,
         yoyo: true,
@@ -77,9 +90,15 @@ export default function GrowthGraph() {
         stagger: 0.4,
         delay: 3,
       });
-    });
+    }, wrapperRef); // 👈 SCOPE ADDED (CRITICAL)
 
-    return () => ctx.revert();
+    return () => {
+      try {
+        ctx.revert();
+      } catch {
+        // dev-only turbopack safety
+      }
+    };
   }, []);
 
   return (

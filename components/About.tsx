@@ -71,19 +71,6 @@ export default function About() {
       });
 
       /* ===============================
-         PIN + SCRUB (DESKTOP ONLY)
-      =============================== */
-      if (window.innerWidth > 1024) {
-        ScrollTrigger.create({
-          trigger: section.current,
-          start: "top top",
-          end: "+=600",
-          pin: true,
-          scrub: 1,
-        });
-      }
-
-      /* ===============================
          CARD INTERACTIONS
       =============================== */
       cards.current.forEach((card) => {
@@ -144,17 +131,19 @@ export default function About() {
       <div className="mx-auto max-w-7xl px-6 md:px-10 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
         {/* LEFT CONTENT */}
         <div ref={textBlock} className="space-y-6 md:space-y-8">
+          <h4 className="fancy-heading font-semibold leading-snug text-2xl sm:text-2xl md:text-3xl">
+            Our job is simple!
+          </h4>
+
           <h2 className="font-semibold leading-tight text-3xl sm:text-4xl md:text-5xl">
-            We are not just developers.
-            <span className="block text-[#8d0b41]">
-              We build digital powerhouses.
-            </span>
+            <span className="text-[#8d0b41]">Understand</span> your business to
+            build what <span className="text-[#8d0b41]">actually</span> helps
+            you grow.
           </h2>
 
           <p className="text-gray-400 text-base sm:text-lg leading-relaxed max-w-xl">
-            We partner with ambitious brands to create high-performing digital
-            products. From concept to conversion, everything we build is
-            engineered for growth.
+            From the first idea to real results, we stay focused on what helps
+            your business.
           </p>
         </div>
 

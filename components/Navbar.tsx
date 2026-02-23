@@ -13,6 +13,9 @@ export default function Navbar() {
 
   const [open, setOpen] = useState(false);
 
+  // 🔥 BASE PATH (important for live)
+  const BASE_PATH = process.env.NODE_ENV === "production" ? "/portfolio" : "";
+
   // Navbar entrance
   useEffect(() => {
     gsap.from(navRef.current, {
@@ -50,7 +53,7 @@ export default function Navbar() {
         <nav className="nav-inner">
           <Link href="/" className="logo">
             <Image
-              src="/logo.png"
+              src={`${BASE_PATH}/logo.png`}
               alt="Your Brand Logo"
               width={120}
               height={40}
@@ -59,11 +62,11 @@ export default function Navbar() {
           </Link>
 
           <div className="nav-links">
-            <a href="/">Home</a>
-            <a href="/#about">About</a>
-            <a href="/#work">Our Creatives</a>
-            <a href="/#studies">Case Studies</a>
-            <a href="/#contact">Contact</a>
+            <a href={`${BASE_PATH}/`}>Home</a>
+            <a href={`${BASE_PATH}/#about`}>About</a>
+            <a href={`${BASE_PATH}/#work`}>Our Creatives</a>
+            <a href={`${BASE_PATH}/#studies`}>Case Studies</a>
+            <a href={`${BASE_PATH}/#contact`}>Contact</a>
           </div>
 
           {/* Mobile toggle */}

@@ -16,8 +16,8 @@ const testimonials = [
   },
   {
     quote:
-      "They don’t just deliver creatives — they understand business. Our leads and conversions improved significantly.",
-    name: "Ayesha Khan",
+      "They don’t just deliver creatives - they understand business. Our leads and conversions improved significantly.",
+    name: "Anurag Patil",
     role: "Marketing Head",
     company: "Real Estate Group",
   },
@@ -30,8 +30,8 @@ const testimonials = [
   },
   {
     quote:
-      "Their attention to detail and data-driven approach helped us scale campaigns without wasting budget.",
-    name: "Neha Verma",
+      "Their attention to detail and data - driven approach helped us scale campaigns without wasting budget.",
+    name: "Ayesha Khan",
     role: "Growth Manager",
     company: "SaaS Company",
   },
@@ -58,7 +58,7 @@ export default function TestimonialsSection() {
           trigger: sectionRef.current,
           start: "top 75%",
         },
-      }
+      },
     );
   }, []);
 
@@ -69,12 +69,9 @@ export default function TestimonialsSection() {
         <div className="testimonials-header">
           <h2>
             Testimonials
-            <span>what our clients say</span>
+            <span>Straight from our clients</span>
           </h2>
-          <p>
-            We build long-term partnerships by focusing on outcomes,
-            transparency, and trust.
-          </p>
+          <p>Their words, experiences and results.</p>
         </div>
 
         {/* GRID */}

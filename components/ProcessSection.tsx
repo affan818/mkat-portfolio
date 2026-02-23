@@ -7,11 +7,26 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const steps = [
-  { title: "Discover", desc: "Understanding your brand, audience, and goals." },
-  { title: "Strategy", desc: "Defining direction and execution roadmap." },
-  { title: "Create", desc: "Designing content and digital experiences." },
-  { title: "Launch", desc: "Executing across the right platforms." },
-  { title: "Optimize", desc: "Improving performance through insights." },
+  {
+    title: "We start by listening",
+    desc: " We understand your brand, your audience, and what you actually want to achieve.",
+  },
+  {
+    title: "Then we plan the direction",
+    desc: "We decide what makes sense, what to focus on, and how to move forward",
+  },
+  {
+    title: "This is where things take shape",
+    desc: " We design content, creatives, and experiences that feel right for your brand",
+  },
+  {
+    title: "We put it out there",
+    desc: "Your work goes live on the platforms where your audience already is",
+  },
+  {
+    title: "And we keep improving",
+    desc: "We track what’s working, fix what’s not, and make things better over time",
+  },
 ];
 
 export default function ProcessSection() {
@@ -87,7 +102,7 @@ export default function ProcessSection() {
         gsap.fromTo(
           glowRef.current,
           { opacity: 0.25, scale: 0.9 },
-          { opacity: 0.6, scale: 1, duration: 0.4, ease: "power2.out" }
+          { opacity: 0.6, scale: 1, duration: 0.4, ease: "power2.out" },
         );
       }
     }
@@ -113,9 +128,9 @@ export default function ProcessSection() {
           <div className="process-clear-header">
             <h2>
               Our Process
-              <span>a simple system that works</span>
+              <span>Here’s how we work with you</span>
             </h2>
-            <p>A clear, repeatable approach we follow on every project.</p>
+            <p>A simple, repeatable flow that keeps everyone aligned</p>
           </div>
 
           <div className="process-clear-steps">

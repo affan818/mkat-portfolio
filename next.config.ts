@@ -1,7 +1,26 @@
-import type { NextConfig } from "next";
+const isProd = process.env.NODE_ENV === "production";
 
-const nextConfig: NextConfig = {
-  /* config options here */
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: false,
+
+  ...(isProd && {
+    output: "export",
+    basePath: "/portfolio",
+    trailingSlash: true,
+  }),
+
+  images: {
+    unoptimized: true,
+  },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
+
+// import type { NextConfig } from "next";
+
+// const nextConfig: NextConfig = {
+//   reactStrictMode: false,
+// };
+
+// export default nextConfig;

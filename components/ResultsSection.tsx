@@ -39,7 +39,7 @@ export default function ResultsSection() {
             trigger: item,
             start: "top 80%",
           },
-        }
+        },
       );
 
       // Number count
@@ -55,7 +55,7 @@ export default function ResultsSection() {
             trigger: item,
             start: "top 80%",
           },
-        }
+        },
       );
     });
   }, []);
@@ -67,11 +67,11 @@ export default function ResultsSection() {
         <div className="results-header">
           <h2>
             Results
-            <span>that actually matter</span>
+            <span>that matter</span>
           </h2>
           <p>
-            We focus on measurable impact, not vanity metrics. Here’s what our
-            clients typically see.
+            Not likes for the sake of likes but real progress that is visible in
+            your business.
           </p>
         </div>
 

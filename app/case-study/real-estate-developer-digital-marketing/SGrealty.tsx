@@ -3,14 +3,21 @@
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import AuthorityStack from "./AuthorityStack";
+
 export default function SGrealty() {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     if (!sectionRef.current) return;
+    if (typeof window === "undefined") return;
 
-    const ctx = gsap.context(() => {
-      gsap.from(".cs-intro-reveal", {
+    const ctx = gsap.context((self) => {
+      // 👇 SCOPED selector (VERY IMPORTANT)
+      const items = self.selector?.(".cs-intro-reveal");
+
+      if (!items || !items.length) return;
+
+      gsap.from(items, {
         y: 40,
         opacity: 0,
         duration: 1,
@@ -20,7 +27,13 @@ export default function SGrealty() {
       });
     }, sectionRef);
 
-    return () => ctx.revert();
+    return () => {
+      try {
+        ctx.revert();
+      } catch {
+        // dev-only Turbopack safety
+      }
+    };
   }, []);
 
   return (
@@ -512,23 +525,23 @@ export default function SGrealty() {
           {/* RIGHT – CREATIVE SHOWCASE */}
           <div className="grid grid-cols-2 gap-6">
             {/* Creative 1 */}
-            <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur">
+            <div className="relative">
               <img
-                src="/creative-1.jpg"
+                src="/creatives/10.png"
                 alt="SG Realty Creative"
-                className="h-full w-full object-cover"
+                className="w-full h-auto block rounded-xl"
+                loading="lazy"
               />
-              <div className="absolute inset-0 bg-black/10" />
             </div>
 
             {/* Creative 2 */}
-            <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur">
+            <div className="relative">
               <img
-                src="/creative-2.jpg"
+                src="/creatives/11.png"
                 alt="SG Realty Creative"
-                className="h-full w-full object-cover"
+                className="w-full h-auto block rounded-xl"
+                loading="lazy"
               />
-              <div className="absolute inset-0 bg-black/10" />
             </div>
           </div>
         </div>

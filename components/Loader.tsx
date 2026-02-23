@@ -6,6 +6,8 @@ import Image from "next/image";
 export default function Loader() {
   const loader = useRef<HTMLDivElement>(null);
   const logo = useRef<HTMLDivElement>(null);
+  // 🔥 BASE PATH (important for live)
+  const BASE_PATH = process.env.NODE_ENV === "production" ? "/portfolio" : "";
 
   useEffect(() => {
     const tl = gsap.timeline();
@@ -30,7 +32,7 @@ export default function Loader() {
     >
       <div ref={logo} className="loader-logo">
         <Image
-          src="/logo.png"
+          src={`${BASE_PATH}/logo.png`}
           alt="MKAT Logo"
           width={140}
           height={48}

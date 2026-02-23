@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import Link from "next/link";
 export default function Hero() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -67,18 +68,20 @@ export default function Hero() {
       <div className="hero-content">
         <div className="hero-title-wrap">
           <h1 ref={titleRef}>
-            We craft digital <span>experiences</span>
-            <br /> that convert attention into money.
+            Marketing <span>doesn’t</span> have to be complicated.
           </h1>
         </div>
 
         <p ref={subtitleRef}>
-          High-end websites, branding & growth strategies for ambitious brands.
+          We simplify the process and help your business communicate better and
+          grow consistently.
         </p>
 
-        <button ref={btnRef} className="hero-btn">
-          Start a project
-        </button>
+        <Link href={"#contact"}>
+          <button ref={btnRef} className="hero-btn">
+            Start a project
+          </button>
+        </Link>
       </div>
 
       <div className="hero-glow" ref={glowRef} />
